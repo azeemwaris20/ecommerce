@@ -1,0 +1,61 @@
+<main>
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Checkout</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="login_part section_padding ">
+      <div class="container">
+          <% unless alert.blank? %>
+            <div class="alert alert-danger alert-dismissible fade show">
+              <%= alert %>
+            </div>
+          <% end %>
+          <article>
+            <label class="amount">
+              <h1>Current Bill: $<%= current_cart.total_price %></h1>
+            </label>
+          </article>
+          <div class="shipping_box2">
+            <div>
+              <%= form_tag coupon_path, method: :get do %>
+                <div>
+                  <%= text_field_tag :coupon, params[:coupon], class: 'post_code', required: true, placeholder: 'Coupon' %>
+                  <%= submit_tag 'Apply Coupon', name: nil, class: 'btn_1 down-space', id: 'chk_btn_1' %>
+                </div>
+              <% end %>
+            </div>
+            <%= form_with do %>
+            <% if session[:discount].nil? %>
+              <div class="discount">
+                <h3>Discount: 0%</h3>
+                <h1>After discount</h1>
+                <h1>Total Bill: $<%= current_cart.total_price %></h1>
+              </div>
+            <% else %>
+              <div class="discount">
+                <h3>Discount: <%= session[:discount] %>%</h3>
+                <h1>After discount</h1>
+                <h1>Total Bill: $<%= after_discount %></h1>
+              </div>
+            <% end %>
+            <div class="up-space">
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                      data-description="Submit Total Bill"
+                      data-amount=<% current_cart.total_price %>
+                      data-locale="auto"></script>
+            </div>
+            <% end %>
+          </div>
+      </div>
+    </section>
+  </div>
+</main>

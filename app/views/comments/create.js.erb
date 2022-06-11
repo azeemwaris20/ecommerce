@@ -1,0 +1,6 @@
+var body = '<%= @comment.body %>';
+if (body != "")
+{
+  $('#add_comments').append('<%= j render @comment %>');
+  $('#comment_area').val('');
+}

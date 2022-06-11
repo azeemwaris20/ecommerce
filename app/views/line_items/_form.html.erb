@@ -1,0 +1,12 @@
+<div class="product_count_area">
+  <%= form_with(url: line_item_path, local: true) do |form| %>
+    <p>
+      <%= form.label :quantity %><br>
+      <input name="quantity" type='number' class='form-control' value="1" min="1"></input>
+    </p>
+    <p>
+      <%= hidden_field_tag :product_id, product_id %>
+      <%= form.submit 'Add to cart', class: "btn_3"%>
+    </p>
+  <% end %>
+</div>

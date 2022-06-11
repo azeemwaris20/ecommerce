@@ -1,0 +1,61 @@
+<main>
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Cart List</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="cart_area section_padding">
+    <div class="container">
+      <% unless alert.blank? %>
+        <div class="alert alert-danger alert-dismissible fade show">
+          <%= alert %>
+        </div>
+      <% end %>
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <%= render(@cart.line_items) %>
+            <tr>
+              <td>
+                <% if current_cart.line_items.size > 0 %>
+                  <%= link_to 'Empty Cart', cart_path(current_cart),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: "genric-btn primary small" %>
+                <% end %>
+              </td>
+              <td></td>
+              <td>
+                <h5>Total</h5>
+              </td>
+              <td>
+                <h5>$<%= @cart.total_price %></h5>
+              </td>
+            </tr>
+          </table>
+          <div class="checkout_btn_inner float-right">
+            <%= link_to 'Continue Shopping', products_path, class: 'btn_1' %>
+            <% if current_cart.line_items.size > 0 %>
+              <%= link_to "Proceed to checkout!", new_checkout_path, class: 'btn_1 checkout_btn_1' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,26 @@
+<div id="comment-<%= comment.id %>">
+  <div class="comments">
+    <hr>
+    <div class="generic-blockquote">
+      <h4><%= comment.user.username %></h4>
+      <p>
+        <%= comment.body %>
+      </p>
+      <% if can? :update, comment %>
+        <div>
+          <%= link_to 'Edit', [comment.product, comment],
+                         method: :patch,
+                         remote: true,
+                         class: "genric-btn primary small" %>
+      <% end %>
+      <% if can? :destroy, comment %>
+          <%= link_to 'Delete', [comment.product, comment],
+                         method: :delete,
+                         remote: true,
+                         data: { confirm: 'Are you sure?' },
+                         class: "genric-btn primary small" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

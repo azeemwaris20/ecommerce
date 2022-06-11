@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+.slider-height2 {
+    margin-top: 100px;
+    min-height: 300px;
+    background-image: image-url('hero/about_hero.png');
+}
+
+.contact-section {
+    padding: 200px 0 100px;
+}
+
+.login_part .login_part_form h3 {
+    margin-bottom: 30px;
+}
+
+.card_area .product_count {
+    border: 0px;
+}
+
+.card_area .product_count .product_count_item2 {
+    width: 150px;
+}
+
+.card_area .product_count_area .margin {
+    padding-top: 10px;
+}
+
+#forget-link {
+  color: blue;
+}
+
+#reset-btn {
+  margin-top: 20px;
+}
+
+#reset-done {
+  margin-top: 20px;
+}
+
+.hide-input {
+  display: none;
+}
+
+.nav-bar-search {
+  display: inline;
+  width: 300px;
+}
+
+#btn-search {
+  line-height: 35px;
+  padding: 0 30px;
+}
+
+.user-img {
+  margin-left: 35px;
+}
+
+.logout-btn {
+  margin-top: 7px;
+}
+
+#comment_area {
+  resize: none;
+}
+
+.single-new-pro .product-img img {
+  width: 300px;
+}
+
+.popular-items .single-popular-items .popular-img img {
+  width: 300px;
+}
+
+.image-show img {
+  width: 200px;
+}

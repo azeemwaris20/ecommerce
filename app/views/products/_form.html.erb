@@ -1,0 +1,52 @@
+<%= form_with model: @product, local: true do |form| %>
+<% if @product.errors.any? %>
+<div id="error_explanation">
+  <div class="alert alert-danger alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Wrong!</strong>
+    <h2>
+      <%= pluralize(@product.errors.count, "error") %> prohibited
+      this product from being saved:
+    </h2>
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+<p>
+  <%= form.label :name %><br>
+  <%= form.text_field :name, class: 'form-control'%>
+</p>
+<p>
+  <%= form.label :price %><br>
+  <%= form.number_field :price, class: 'form-control'%>
+</p>
+<p>
+  <%= form.label :description %><br>
+  <%= form.text_area :description, class: 'form-control'%>
+</p>
+<p>
+  <%= form.label :quantity %><br>
+  <%= form.number_field :quantity, class: 'form-control'%>
+</p>
+<p>
+  <%= form.label :images %><br>
+  <div class="genric-btn info radius", onclick="upload_it(event)">
+    Upload image
+  </div>
+  <%= form.file_field :images, multiple: true, accept: 'image/png,image/gif,image/jpeg',
+      class: 'hide-input', id: 'upload-it'%>
+  <div class="target">
+    <img class="card_image" src="">
+  </div>
+  <p></p>
+  <p>
+    <%= form.submit class: 'btn btn-primary'%>
+  </p>
+</p>
+<% end %>

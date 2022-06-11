@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Watch shop | eCommers</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <title>Ecommerce</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header>
+    <div class="header-area">
+      <div class="main-header header-sticky sticky-bar sticky">
+        <div class="container-fluid">
+          <div class="menu-wrapper">
+            <div class="logo">
+              <%= link_to root_path do %>
+                <%= image_tag 'logo/logo.png' %>
+              <% end %>
+            </div>
+            <div class="main-menu d-none d-lg-block">
+              <nav>
+                <ul id="navigation">
+                  <li>
+                    <%= form_tag products_path, method: :get do %>
+                      <div>
+                        <%= text_field_tag :search, params[:search], class: 'form-control nav-bar-search', required: true %>
+                        <%= submit_tag 'Search', name: nil, class: 'genric-btn danger radius', id: 'btn-search' %>
+                      </div>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to 'Home', root_path %>
+                  </li>
+                  <li class="hot">
+                    <%= link_to 'Shop', products_path %>
+                  </li>
+                  <li>
+                    <%= link_to 'cart (' + items_count.to_s + ')', cart_path(current_cart) %>
+                  </li>
+                  <li>
+                    <%= link_to 'About', about_path %>
+                  </li>
+                  <li>
+                    <%= link_to 'Contact', contact_path %>
+                  </li>
+                  <li><a>Account</a>
+                    <ul class="submenu">
+                      <% unless user_signed_in? %>
+                        <li>
+                          <%= link_to "Login Now!", new_user_session_path %>
+                        </li>
+                        <li>
+                          <%= link_to "Sign Up", new_user_registration_path %>
+                        </li>
+                      <% else %>
+                        <div class='user-img'>
+                          <% if current_user.avatar.attached? %>
+                            <li>
+                              <%= image_tag(current_user.avatar, width: 95) %>
+                            </li>
+                          <% else %>
+                            <li>
+                              <%= image_tag('profile/none.png', width: 95) %>
+                            </li>
+                          <% end %>
+                          <li>
+                            <%= current_user.username %>
+                          </li>
+                        </div>
+                        <li class='logout-btn'>
+                          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mobile_menu d-block d-lg-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <%= yield %>
+  <footer>
+    <div class="footer-area footer-padding">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <div class="single-footer-caption mb-30">
+                <div class="footer-logo">
+                  <%= image_tag('logo/logo2_footer.png') %>
+                </div>
+                <div class="footer-tittle">
+                  <div class="footer-pera">
+                    <p>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a>About</a></li>
+                  <li><a> Offers & Discounts</a></li>
+                  <li><a> Get Coupon</a></li>
+                  <li><a> Contact Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>New Products</h4>
+                <ul>
+                  <li><a>Woman Cloth</a></li>
+                  <li><a>Fashion Accessories</a></li>
+                  <li><a> Man Accessories</a></li>
+                  <li><a> Rubber made Toys</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Support</h4>
+                <ul>
+                  <li><a>Frequently Asked Questions</a></li>
+                  <li><a>Terms & Conditions</a></li>
+                  <li><a>Privacy Policy</a></li>
+                  <li><a>Report a Payment Issue</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-xl-7 col-lg-8 col-md-7"></div>
+          <div class="col-xl-5 col-lg-4 col-md-5">
+            <div class="footer-copy-right f-right">
+              <div class="footer-social">
+                <a><i class="fa fa-facebook"></i></a>
+                <a><i class="fa fa-twitter"></i></a>
+                <a><i class="fa fa-github"></i></a>
+                <a><i class="fa fa-whatsapp"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

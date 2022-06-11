@@ -1,0 +1,40 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'font-awesome';
+
+.signing-up {
+  color: red;
+  width: 350px;
+}
+
+.signing-up:hover {
+  color: #666;
+  }
+
+.loging-out-p {
+  margin-top: 10px;
+}
+
+.pagination * {
+  color: red;
+}
+
+.page-item.active .page-link {
+    background-color: red;
+    border-color: red;
+}
+
+.shipping_box2 {
+  width: 30%;
+}
+
+.down-space {
+  margin-bottom: 20px;
+}
+
+#chk_btn_1 {
+    padding: 3px 10px;
+    font-size: 12px;
+}

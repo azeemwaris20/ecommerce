@@ -1,0 +1,28 @@
+<tbody>
+  <tr>
+    <td>
+      <div class="media">
+        <div class="d-flex">
+          <%= image_tag(line_item.product.images.first) %>
+        </div>
+        <div class="media-body">
+          <p><%= line_item.product.name %></p>
+          <p><%= link_to 'Remove', line_item_path(line_item),
+                                                      method: :delete,
+                                                      data: { confirm: 'Are you sure?' }, class: "genric-btn primary small" %></p>
+        </div>
+      </div>
+    </td>
+    <td>
+      <h5>$<%= line_item.product.price %></h5>
+    </td>
+    <td>
+      <div class="product_count">
+        <h5><%= line_item.quantity %></h5>
+      </div>
+    </td>
+    <td>
+      <h5>$<%= line_item.sub_total %></h5>
+    </td>
+  </tr>
+</tbody>

@@ -1,0 +1,8 @@
+<%= form_with(model: [ @product, @product.comments.build ]) do |form| %>
+  <p>
+    <%= form.text_area :body, class: 'form-control comment-body', id: 'comment_area' %>
+  </p>
+  <p>
+    <%= form.submit class: 'btn btn-primary'%>
+  </p>
+<% end %>

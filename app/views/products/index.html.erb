@@ -1,0 +1,62 @@
+<main>
+  <div class="slider-area ">
+    <div class="single-slider slider-height2 d-flex align-items-center" style="background-color: #eee;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Watch Shop</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      <% if user_signed_in? %>
+        <div class="row justify-content-center">
+          <div class="room-btn pt-70">
+            <%= link_to 'Add new Products', new_product_path, class: 'btn' %>
+          </div>
+        </div>
+      <% end %>
+      <div class="tab-content popular-items latest-padding" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="row">
+            <% if @products.size < 1 %>
+              <h1> No Products Found </h1>
+            <% end %>
+            <% @products.each do |product| %>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+              <div class="single-popular-items mb-50 text-center">
+                <div class="popular-img">
+                  <%= image_tag(product.images.first) %>
+                  <%= link_to product_path(product) do %>
+                    <div class="img-cap">
+                      <span>
+                        Show Details
+                      </span>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="popular-caption">
+                  <h3>
+                    <%= link_to product.name, product_path(product) %>
+                  </h3>
+                  <span>$
+                    <%= product.price %>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @products %>
+      </div>
+    </div>
+  </section>
+</main>
