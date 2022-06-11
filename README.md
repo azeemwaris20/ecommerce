@@ -1,24 +1,14 @@
-#Ecommerce
+# Ecommerce
 
-### Check Ruby version
-* Ruby version 2.6.5
 
-### Check Rails version
-* Rails 5.2.4.4
+## Setup using docker
 
-### Setup postgres
-* Database postgresql '>= 0.18', '< 2.0'
-* Use database.yml file for configurations.
+* Install docker on your machine
+* Run command `docker-compose up --build`
+* To run console `docker exec -it ecommerce-web-1 rails c`
 
-### Add email and password
-* set env variable gmail_username
-* set env variable gmail_password
+### Ruby version
+* Ruby 2.6.5
 
-### 'Thinking Sphinx'
-* Search using 'thinking-sphinx'
-* install 'sphinx'
-* run 'rake ts:start'
-
-### Install figaro
-* Add credentials in application.yml file.
-* For both email and stripe.
+### Rails version
+* Rails 5.2.4
